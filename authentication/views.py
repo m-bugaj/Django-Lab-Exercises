@@ -32,6 +32,10 @@ def log_in(request):
     else:
         context = {'form': LoginForm()}
         return render(request, 'authentication/login.html', context)
+    
+def log_out(request):
+    logout(request)
+    return redirect('view_news')
             
                
 

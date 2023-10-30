@@ -37,5 +37,21 @@ def add(request):
 def get(request, id):
     news = get_object_or_404(News, id=id)
     context = {'news': news}
-    return render(request, 'news/view.html', context)   
+    return render(request, 'news/view.html', context) 
+
+@login_required(login_url='/login/')
+def edit_news(request, news_id):
+    news_item = get_object_or_404(News, pk=news_id)
+
+    if request.method == 'POST':
+        form = NewsForm(request.POST, instance=news_item)
+
+        if form.is_valid():
+            form.save()
+            return redirect('view_news')  
+    
+    else:
+        form = NewsForm(instance=news_item)
+
+    return render(request, 'news/edit.html', {'form': form})    
 # Create your views here.
