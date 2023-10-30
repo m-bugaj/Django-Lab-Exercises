@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import News
 from .forms import NewsForm
@@ -30,5 +30,10 @@ def add(request):
     else:
         news = NewsForm()
         context = {'form': news}
-        return render(request, 'news/add.html', context)    
+        return render(request, 'news/add.html', context)  
+
+def get(request, id):
+    news = get_object_or_404(News, id=id)
+    context = {'news': news}
+    return render(request, 'news/view.html', context)   
 # Create your views here.

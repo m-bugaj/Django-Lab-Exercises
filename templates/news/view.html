@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<style>
+    table {
+    border-collapse: collapse; /* Usuwa podwójne krawędzie */
+    width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black; /* Dodaje obramowanie do tabeli oraz jej komórek */
+    }
+
+    th, td {
+        padding: 8px; /* Dodaje padding do komórek */
+        text-align: left; /* Wyrównuje tekst do lewej */
+    }
+
+</style>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Topic</th>
+                <th>Author</th>
+                <th>Text</th>
+                <th>Create Time</th>
+                <th>Last Edit Time</th>
+            </tr>
+        </thead>
+        <tbody>
+      
+                <tr>
+                    <td>{{news.topic}}</td>
+                    <td>{{news.author}}</td>
+                    <td>{{news.text}}</td>
+                    <td>{{news.create_time}}</td>
+                    <td>{{news.last_edit_time}}</td>
+                </tr>
+    
+        </tbody>
+    </table>
+    
+</body>
+</html>
