@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+    {% block content %}
+
+<style>
+    table {
+    border-collapse: collapse; /* Usuwa podwójne krawędzie */
+    width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black; /* Dodaje obramowanie do tabeli oraz jej komórek */
+    }
+
+    th, td {
+        padding: 8px; /* Dodaje padding do komórek */
+        text-align: left; /* Wyrównuje tekst do lewej */
+    }
+
+</style>
+    
+{% if cars %}
+    <table>
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+
+
+    
+    
+        {% for c in cars %}
+        <tbody>
+      
+            <tr>
+                <td><a href="/cars/{{ c.id }}/">{{ c.brand }}</a></td>
+                <td>{{c.car_model}}</td>
+                <td>{{c.date_of_production}}</td>
+                {% if user.is_authenticated %}
+                <td><a href="/cars/edit/{{ c.id }}/">Edit</a></td>
+                {% endif %}
+            </tr>
+
+    </tbody>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>No news are available.</p>
+{% endif %}
+
+    {% if user.is_authenticated %}
+    <a href="/cars/add/">Add cars</a>
+    {% endif %}
+
+    
+        
+    
+
+
+    {% endblock %}

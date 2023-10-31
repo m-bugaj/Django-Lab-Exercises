@@ -47,6 +47,7 @@ def edit_news(request, news_id):
         form = NewsForm(request.POST, instance=news_item)
 
         if form.is_valid():
+            form.last_edit_time = timezone.now()
             form.save()
             return redirect('view_news')  
     
